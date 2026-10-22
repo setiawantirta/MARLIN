@@ -1,0 +1,56 @@
+statistic,value
+n_raw_compounds,31561
+n_after_qc,31224
+n_curated_unique,26754
+n_rejected_qc,337
+n_exact_duplicates_removed,804
+n_stereo_duplicates_collapsed,3666
+n_unique_murcko_scaffolds,10623
+n_unique_murcko_scaffolds_cyclic_only,10622
+n_acyclic_no_scaffold,1707
+n_singleton_scaffolds,7176
+largest_scaffold_family_n,877
+largest_scaffold_smiles,c1ccccc1
+n_macrocycles,3394
+n_peptide_like,1230
+n_flag_large_peptide_or_macrocycle,726
+n_mw_gt_900,1903
+n_ro5_compliant_0_violations,13231
+n_cmnpd_bbb_level_0_very_high,2744
+n_cmnpd_bbb_level_1_high,4175
+n_cmnpd_bbb_level_2_medium,3006
+n_cmnpd_bbb_level_3_low,3878
+n_cmnpd_bbb_level_4_undefined_outside_model,12951
+n_cmnpd_bbb_permeant_level0or1,6919
+n_descriptor_bbb_heuristic_pass,8480
+n_indonesia_regional_files,69
+n_indonesia_export_rows,697
+n_indonesia_unique_ids_raw,656
+n_indonesia_in_curated_library,592
+indonesia_region_indonesia 1,219
+indonesia_region_bali,20
+indonesia_region_ambon,20
+indonesia_region_manado,20
+indonesia_region_teluk tulamben,20
+indonesia_region_kepulauan seribu,19
+indonesia_region_flores,18
+indonesia_region_sulawesi 1,17
+indonesia_region_indonesia,17
+indonesia_region_sulawesi utara,17
+n_glioma_activity_records,1037
+n_glioma_activity_compounds,284
+n_curated_with_glioma_activity,272
+mw_median,419.174
+mw_iqr,320.47-562.79
+clogp_median,3.845
+clogp_iqr,2.25-5.27
+tpsa_median,80.92
+tpsa_iqr,52.60-133.49
+qed_median,0.408
+qed_iqr,0.22-0.58
+np_likeness_median,1.891
+np_likeness_iqr,1.06-2.62
+fraction_csp3_median,0.667
+fraction_csp3_iqr,0.48-0.82
+n_stereocentres_median,4.0
+n_stereocentres_iqr,2.00-8.00

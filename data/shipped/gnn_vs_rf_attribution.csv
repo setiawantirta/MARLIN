@@ -1,0 +1,34 @@
+metric,group_a,group_b,n_a,n_b,mean_a,mean_b,median_a,median_b,cohens_d,mannwhitney_p,note
+IG: share of |attribution| on aromatic atoms,synthetic ChEMBL test,CMNPD marine (n=194),1200,1164,0.4707966379928865,0.18751031425587342,0.45712379942113357,0.11980335225850991,1.5273854368044153,1.6959216327927452e-193,
+IG: share of |attribution| on sp3 atoms,synthetic ChEMBL test,CMNPD marine (n=194),1200,1164,0.2673131355858328,0.46361599615735055,0.2644630153705147,0.46388897852458844,-0.9875665368655677,1.2429137650403647e-99,
+IG: share of |attribution| on Murcko-scaffold atoms,synthetic ChEMBL test,CMNPD marine (n=194),1200,1164,0.7584634810911031,0.5877618337367141,0.7904184858186156,0.6275608555788378,0.7574295131884147,3.392360945376312e-56,
+IG: normalised attribution entropy,synthetic ChEMBL test,CMNPD marine (n=194),1200,1164,0.8816273407856553,0.8727205591394283,0.8840766415071917,0.8797675845919442,0.2516556849919794,4.8378049398041425e-06,
+RF-projected SHAP: share on aromatic atoms,synthetic ChEMBL test,CMNPD marine (n=194),1200,1164,0.6120609818991155,0.25368104497553895,0.6343761517461656,0.19100647814413096,1.5483971610318423,2.8166173677624894e-185,
+RF-projected SHAP: share on sp3 atoms,synthetic ChEMBL test,CMNPD marine (n=194),1200,1164,0.1698667403321918,0.43251499264661747,0.12295125262296686,0.4338299815035399,-1.2240021219949084,1.1705766100619691e-122,
+RF-projected SHAP: share on Murcko-scaffold atoms,synthetic ChEMBL test,CMNPD marine (n=194),1200,1164,0.8460970946567188,0.6563143308076497,0.8842177737829031,0.7307756723428767,0.8438475116863673,6.587806077101058e-71,
+RF-projected SHAP: normalised attribution entropy,synthetic ChEMBL test,CMNPD marine (n=194),1200,1164,0.8755278435621964,0.8772318273901336,0.8812427229083732,0.8929010321536438,-0.029102606958995005,0.0001815049617329523,
+RF vs GNN per-molecule atom-attribution Spearman rho,synthetic ChEMBL test,CMNPD marine (n=194),1200,1164,0.2570809063414419,0.09909347661421042,0.26609725323652633,0.0968578842786935,0.7440520454052685,5.298106097747662e-68,
+GNNExplainer: atom-mask share on aromatic atoms,synthetic ChEMBL test,CMNPD marine subsample,126,126,0.6073009881309457,0.2913775615437317,0.6035111573891057,0.28029126009635363,1.453659057956435,4.390533183490716e-20,
+GNNExplainer: atom-mask share on Murcko-scaffold atoms,synthetic ChEMBL test,CMNPD marine subsample,126,126,0.8423669494019299,0.6551804998127232,0.8707992341556692,0.7524019048143153,0.8834057415800832,4.0042681420694897e-10,
+GNNExplainer: normalised atom-mask entropy,synthetic ChEMBL test,CMNPD marine subsample,126,126,0.9981301329094551,0.9980886676261045,0.9981497224692972,0.9982776902639393,0.0554940521485545,0.7814590550908737,
+"aromatic share: GNN(IG) minus RF(SHAP), same molecules",GNN IG,RF SHAP,1200,1200,0.4707966379928865,0.6120609818991155,0.45712379942113357,0.6343761517461656,,6.373878355121301e-128,"Wilcoxon signed-rank, synthetic ChEMBL test"
+"aromatic share: GNN(IG) minus RF(SHAP), same molecules",GNN IG,RF SHAP,1164,1164,0.18751031425587342,0.25368104497553895,0.11980335225850991,0.19100647814413096,,3.2136593902853846e-56,"Wilcoxon signed-rank, CMNPD marine (n=194)"
+"IG mean atom-feature attribution: cosine(synthetic, marine)",EGFR,-,1200,1164,0.945395060496669,,,,,,45-dim atom feature space
+"IG mean atom-feature attribution: cosine(synthetic, marine)",PDGFRA,-,1200,1164,0.9484396392619627,,,,,,45-dim atom feature space
+"IG mean atom-feature attribution: cosine(synthetic, marine)",PIK3CA,-,1200,1164,0.9422309844779313,,,,,,45-dim atom feature space
+"IG mean atom-feature attribution: cosine(synthetic, marine)",KDR,-,1200,1164,0.9399552861361095,,,,,,45-dim atom feature space
+"IG mean atom-feature attribution: cosine(synthetic, marine)",CDK6,-,1200,1164,0.933426236923272,,,,,,45-dim atom feature space
+"IG mean atom-feature attribution: cosine(synthetic, marine)",IDH1,-,1200,1164,0.9681324857464944,,,,,,45-dim atom feature space
+RF: FRACTION of total |SHAP| carried by the 30 global descriptors,synthetic ChEMBL test,CMNPD marine (n=194),6445,1164,0.3086223900318146,0.3255087733268738,0.30791714787483215,0.33402585983276367,-0.1649206131696701,7.560778669812862e-09,all 6 targets pooled; the GNN has NO analogous non-local component (0 by construction)
+"RF: top-10 feature overlap, test vs marine ranking",EGFR,-,10,10,8.0,,,,,,count of shared features out of 10 (2078-dim space)
+"RF: top-10 feature overlap, test vs marine ranking",PDGFRA,-,10,10,7.0,,,,,,count of shared features out of 10 (2078-dim space)
+"RF: top-10 feature overlap, test vs marine ranking",PIK3CA,-,10,10,7.0,,,,,,count of shared features out of 10 (2078-dim space)
+"RF: top-10 feature overlap, test vs marine ranking",KDR,-,10,10,7.0,,,,,,count of shared features out of 10 (2078-dim space)
+"RF: top-10 feature overlap, test vs marine ranking",CDK6,-,10,10,8.0,,,,,,count of shared features out of 10 (2078-dim space)
+"RF: top-10 feature overlap, test vs marine ranking",IDH1,-,10,10,8.0,,,,,,count of shared features out of 10 (2078-dim space)
+"D-MPNN: top-10 atom-feature overlap, synthetic vs marine",EGFR,-,10,10,8.0,,,,,,count of shared atom features out of 10 (45-dim space)
+"D-MPNN: top-10 atom-feature overlap, synthetic vs marine",PDGFRA,-,10,10,7.0,,,,,,count of shared atom features out of 10 (45-dim space)
+"D-MPNN: top-10 atom-feature overlap, synthetic vs marine",PIK3CA,-,10,10,7.0,,,,,,count of shared atom features out of 10 (45-dim space)
+"D-MPNN: top-10 atom-feature overlap, synthetic vs marine",KDR,-,10,10,7.0,,,,,,count of shared atom features out of 10 (45-dim space)
+"D-MPNN: top-10 atom-feature overlap, synthetic vs marine",CDK6,-,10,10,6.0,,,,,,count of shared atom features out of 10 (45-dim space)
+"D-MPNN: top-10 atom-feature overlap, synthetic vs marine",IDH1,-,10,10,8.0,,,,,,count of shared atom features out of 10 (45-dim space)

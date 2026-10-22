@@ -1,0 +1,226 @@
+# =============================================================================
+#  marine_antiglioma_reproducibility - single configuration file
+#
+#  Every path, threshold and seed used anywhere in this module lives here.
+#  No constant may be buried in code. Values are the ones the published results
+#  were produced with; changing one changes the result and the verification
+#  stage (stage 12) will say so.
+# =============================================================================
+
+study:
+  title: "AI-guided triage of marine natural products against a six-target glioma panel"
+  module_version: "1.0.0"
+
+paths:
+  # Directories searched, in order, for every logical input name. Relative
+  # paths resolve against the package root. Override at run time with the
+  # MARINE_REPRO_DATA environment variable, which is searched first.
+  # Each root is searched recursively by basename, so a file may sit in any
+  # subdirectory of any root. Roots that do not exist are skipped silently, which
+  # is why the Colab and the local-mount spelling of the same Drive folder can
+  # both be listed: whichever machine you are on, one of them resolves.
+  data_roots:
+    - data
+    - data/shipped
+    # --- the current project folder on Drive, as mounted inside a Colab session.
+    # Listed before the older "Claude Science" spelling so that when both exist the
+    # current one wins. A root that does not exist is skipped silently, so leaving
+    # every spelling here costs nothing and means the same config works unedited on
+    # Colab, on the macOS Drive client and on a bare checkout.
+    - /content/drive/MyDrive/Projek/tirta/BMC-cmnpd_screening/glioma_final
+    - /content/drive/MyDrive/Projek/tirta/BMC-cmnpd_screening/glioma_final/data
+    - /content/drive/MyDrive/Projek/tirta/BMC-cmnpd_screening/glioma_final/CMNPD_Data
+    - /content/drive/MyDrive/Projek/tirta/BMC-cmnpd_screening/glioma_final/artifacts
+    # --- the same current folder as the Drive desktop client mounts it on macOS
+    - ~/Library/CloudStorage/GoogleDrive-tirta.setiawan@sd.itera.ac.id/My Drive/Projek/tirta/BMC-cmnpd_screening/glioma_final
+    - ~/Library/CloudStorage/GoogleDrive-tirta.setiawan@sd.itera.ac.id/My Drive/Projek/tirta/BMC-cmnpd_screening/glioma_final/CMNPD_Data
+    # --- Google Drive, as mounted inside a Colab session
+    - /content/drive/MyDrive/Projek/tirta/BMC-cmnpd_screening/Claude Science/artifacts
+    - /content/drive/MyDrive/Projek/tirta/BMC-cmnpd_screening/Claude Science/CMNPD_Data
+    - /content/drive/MyDrive/Projek/tirta/BMC-cmnpd_screening/Claude Science/gpu_convergence
+    - /content/drive/MyDrive/Projek/tirta/BMC-cmnpd_screening/Claude Science/gpu_baseline_tuning
+    # --- the same folder as the Google Drive desktop client mounts it on macOS
+    - ~/Library/CloudStorage/GoogleDrive-tirta.setiawan@sd.itera.ac.id/My Drive/Projek/tirta/BMC-cmnpd_screening/Claude Science/artifacts
+    - ~/Library/CloudStorage/GoogleDrive-tirta.setiawan@sd.itera.ac.id/My Drive/Projek/tirta/BMC-cmnpd_screening/Claude Science/CMNPD_Data
+    - ~/Library/CloudStorage/GoogleDrive-tirta.setiawan@sd.itera.ac.id/My Drive/Projek/tirta/BMC-cmnpd_screening/Claude Science/gpu_convergence
+    - ~/Library/CloudStorage/GoogleDrive-tirta.setiawan@sd.itera.ac.id/My Drive/Projek/tirta/BMC-cmnpd_screening/Claude Science/gpu_baseline_tuning
+  output_dir: outputs
+  cache_dir: outputs/cache
+
+seeds:
+  model_seeds: [0, 1, 2]        # the three training seeds behind every mean
+  split_seed: 0                 # scaffold-disjoint partition assignment
+  numpy_seed: 0                 # figure jitter, bootstrap resampling
+  bootstrap_resamples: 2000
+
+# ---------------------------------------------------------------- stage 01
+target_discovery:
+  open_targets_top_n: 180
+  civic_added: 6
+  n_seed_genes: 186
+  string_combined_score_min: 0.70
+  string_species: 9606
+  community_method: greedy_modularity
+  modularity_q: 0.380
+  n_modules: 4
+  hub_chembl_min_compounds: 300
+  enrichment_fdr_max: 0.05
+  enrichment_min_entities: 3
+  panel: [EGFR, PDGFRA, PIK3CA, KDR, CDK6, IDH1]
+
+# ---------------------------------------------------------------- stage 02
+marine_library:
+  source: "CMNPD 1.0 (property table + 2D SDF)"
+  n_records_raw: 31561
+  mw_min: 100
+  mw_max: 1500
+  min_heavy_atoms: 6
+  drop_arsenic: true
+  dedup_key: inchikey
+  n_curated: 26754
+
+# ---------------------------------------------------------------- stage 03
+label_matrix:
+  pchembl_active_min: 6.0
+  pchembl_inactive_max: 5.0
+  confidence_score_min: 8
+  organism: "Homo sapiens"
+  aggregate: median_per_compound_target
+  censored_bounds: decisive_only
+  putative_inactives_from_zinc: 1787
+  n_compounds: 32403
+  n_tasks: 6
+  split:
+    scheme: bemis_murcko_scaffold_disjoint
+    train: 0.70
+    val: 0.10
+    test: 0.20
+    n_train_labelled: 22683
+    n_val_labelled: 3240
+    n_test: 6480
+    n_train_with_putative: 24245
+    n_val_with_putative: 3465
+
+# ---------------------------------------------------------------- stage 04
+controls:
+  positive:
+    source: "ChEMBL mechanism records, max_phase 4"
+    n_drug_target_pairs: 25
+    n_molecules: 24
+    forced_into: test
+  negative:
+    source: "ZINC20 property-matched decoys"
+    n_decoys: 45213
+    property_bins: 6
+    max_tanimoto_to_any_active: 0.35
+    target_ratio_per_active: 50
+
+# ---------------------------------------------------------------- stage 05
+features:
+  fingerprint: morgan
+  fp_radius: 2
+  fp_bits: 2048
+  n_rdkit_descriptors: 30
+  descriptor_scaling: "median-impute then z-score on the ChEMBL training pool"
+  gnn_atom_features: 45
+  gnn_bond_features: 13
+  rwse_walk_length: 16
+
+training:
+  architectures: [GIN, GAT, DMPNN, AttentiveFP, GraphGPS]
+  baselines: [RF, XGB]
+  hidden_dim: 128
+  n_layers: 2
+  epochs: 30
+  patience: 6
+  batch_size: 256
+  lr: 0.001
+  weight_decay: 0.00001
+  torch_threads: 2
+  concurrency: 3
+  loss: masked_bce_with_per_task_pos_weight
+  baseline_random_search_n: 6
+
+# ---------------------------------------------------------------- stage 06
+evaluation:
+  primary_metric: macro_roc_auc
+  selection_criterion: external_marine_roc_auc
+  selected_model: RandomForest_ECFP4_RDKitDesc
+  marine_active_pactivity_min: 6.0
+  n_marine_external: 194
+  n_marine_active: 51
+  multiple_testing: benjamini_hochberg
+  alpha: 0.05
+
+# ---------------------------------------------------------------- stage 07
+attribution:
+  per_target_top_k: 40
+  methods: [treeshap_exact, permutation_importance, mean_decrease_impurity]
+  permutation_repeats: 5
+  consensus_rank: mean_of_per_method_ranks
+  n_reported_features: 10
+
+# ---------------------------------------------------------------- stage 08
+screening:
+  min_targets_active: 2
+  threshold_mode_nominal: mcc_optimal
+  threshold_mode_stringent: library_95th_percentile
+  applicability_domain_tanimoto_min: 0.30
+  require_bbb_not_excluded: true
+  exclude_pains: true
+  n_survivors_stringent: 7
+
+# ---------------------------------------------------------------- stage 09
+control_convergence:
+  # The CEILING, not a number of epochs to train. The published control raised the
+  # ceiling from the main benchmark's 30 to 1,000 and the patience from 6 to 25, then
+  # let early stopping decide: it fired in all fifteen runs between epochs 34 and 86,
+  # so no run came within an order of magnitude of the ceiling. These two values were
+  # previously 200 and 20 here while run_convergence.sh hardcoded 300 and 25 and
+  # ignored them - three different numbers for one setting. The driver now reads them.
+  epochs_max: 1000
+  patience: 25
+  lr_patience: 10
+  capacity: full
+  seeds: [0, 1, 2]
+  architectures: [GIN, GAT, DMPNN, AttentiveFP, GraphGPS]
+
+# ---------------------------------------------------------------- stage 10
+control_hyperparameters:
+  rf_grid_size: 81
+  xgb_grid_size: 96
+  cv: StratifiedKFold
+  cv_folds: 5
+  tune_each_seed_independently: true
+  total_fits: 15930
+
+# ---------------------------------------------------------------- stage 11
+figures:
+  formats: [pdf, png]
+  png_dpi: 300
+  panel_letter_case: upper
+  panel_letter_weight: bold
+  panel_letter_family: serif
+  panel_letter_size: 10
+  in_panel_titles_main: false      # uploaded manuscript convention
+  in_panel_titles_supplementary: true   # kept; only the main figures drop them
+  column_width_mm: 85.0
+  page_width_mm: 170.0
+  base_font_pt: 8
+  secondary_font_pt: 7
+  tick_font_pt: 6
+  min_font_pt: 6
+
+# ---------------------------------------------------------------- stage 12
+verification:
+  published_values: config/published_values.json
+  abs_tolerance: 0.0005          # headline values are published to 3 decimals
+  p_value_rel_tolerance: 0.05
+
+smoke:
+  n_compounds: 400
+  n_marine: 60
+  epochs: 2
+  seeds: [0]
+  rf_trees: 20
+  screen_rows: 2000

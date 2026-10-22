@@ -1,0 +1,10 @@
+stage,n_remaining,n_removed,note
+00_raw_calc_prop_rows,31561,0,CMNPD_1.0_calc_prop.tsv rows (all COMPOUND_IDs unique)
+01_sdf_molecules_parsed,31561,0,CMNPD_1.0_2d.sdf streamed with RDKit; 0 unparsable records; ID set identical to calc_prop
+02_smiles_parsed,31561,0,"MolFromSmiles on calc_prop SMILES; 0 failures, SDF molblock fallback never needed"
+03_standardised,31561,0,"Cleanup + LargestFragmentChooser + Uncharger + canonical tautomer; 1204 multi-fragment, 1540 charge-neutralised, 11771 tautomer-changed"
+04_qc_element_filter,31519,42,"42 rejected for As (outside {H,B,C,N,O,F,Si,P,S,Cl,Se,Br,I})"
+05_qc_mw_100_1500,31225,294,"292 above 1500 Da (max 5033.8), 2 below 100 Da (min 78.0)"
+06_qc_min_6_heavy_atoms,31224,1,1 compound with <6 heavy atoms
+07_dedup_exact_inchikey,30420,804,identical standardised structure incl. stereo (683 duplicate groups)
+08_dedup_stereo_skeleton,26754,3666,InChIKey skeleton block collapse; 3469 skeleton groups had >1 CMNPD ID (max 10); collapsed IDs retained in cmnpd_ids_collapsed

@@ -1,0 +1,37 @@
+# Conda environment for the marine anti-glioma reproducibility module.
+#
+#   conda env create -f env/environment.yml
+#   conda activate glioma-gnn
+#   pip install -r env/requirements.txt       # torch / torch-geometric / shap
+#
+# Versions are the ones the published results were produced with, measured on
+# the reference machine (macOS arm64, 8 cores, 8 GB RAM, no GPU). PyTorch and
+# PyTorch Geometric are installed with pip because the correct wheel depends on
+# the machine's accelerator and the conda-forge builds do not cover every
+# combination.
+#
+# PyYAML is listed but optional: repro/config.py falls back to a small built-in
+# parser for config.yaml, so --check works in a bare interpreter. The reference
+# run had no PyYAML installed and used that fallback.
+name: glioma-gnn
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.14
+  - numpy=2.5.3
+  - pandas=3.0.5
+  - scipy=1.17.1
+  - scikit-learn=1.9.1
+  - matplotlib=3.11.1
+  - rdkit=2026.03.6
+  - networkx=3.6.1
+  - seaborn=0.13.2
+  - joblib=1.6.0
+  - pyarrow=25.0.0
+  - pillow=12.3.0
+  - statsmodels=0.15.0
+  - tqdm=4.70.0
+  - requests=2.34.2
+  - xgboost=3.4.1
+  - pyyaml
+  - pip

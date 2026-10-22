@@ -1,0 +1,85 @@
+logical_name	size_bytes	sha256	origin	produced_by_stage	ships_in_package
+EV_v2.parquet	636359	4eb11dd1622b4e4e97f20a6e9f6eee03c41ca1c5846f470ec8fc4e4238d200ae	stage 03, evidence/censoring tensor	03	yes
+P_v2.parquet	680344	d19a9c95a0c8bbd60a4620b82fe6594510dd2f0eaa0903cf0e3d9ccf5e0beb99	stage 03, pChEMBL tensor	03	yes
+Y_v2.parquet	633353	7c682b065391ffeff6421c717e275dd3f4d5951e7989202e6e643574d00771fa	stage 03, label tensor	03	yes
+ad_loo_train.npy	181592	3a7d8e04898d52cc2081b993c61b383b713db69227c56aa05ccfee8b00f234ab	stage 03, leave-one-out training-pool similarity reference	03	yes
+applicability_domain.csv	10797405	dd4002e802d00d2f9b92a5ea3e50ccd8fb08df0a4a7a5a3ebe70f144c2db8f59	stage 03, per-compound max ECFP4 Tanimoto to the training pool	03	no
+benchmark_metrics.csv	99383	f37cf13fdc5d4e1c8e7dee6fd32a6909ab779af93b8c630c1d41eaf884e6588c	stage 06 result table	06	yes
+benchmark_publication_table.csv	1518	b67d13965f2f72c1b6b8aeb8c8ddfad3e19242750b529417866c59104cfca8fb	stage 06 result table	06	yes
+benchmark_summary.csv	34080	d4f038785c74af29bf0f836c182771b772cda0b42098464c1e244d8b9938f6d9	stage 06 result table	06	yes
+bit_collision_prevalence.csv	594	e48a6e7afba0ad6f4d7bbecdf20cc09bc7cd6fc06b831deb923718366ed4f977	stage 07 result table	07	yes
+calibration.csv	10138	17550f105287f2b48973abef23319bd49505dd5a4ecdebe47e9cfe66c7b277e2	stage 06 result table	06	yes
+centrality.csv	32779	e89e2b3197c9eb22f637560deb7c3264ddaf8c402e0bde243d26e54a03159df8	stage 01, centrality table of the 186-seed network	01	yes
+chembl_counts.json	11543	6b6ee7c147ab9e0775cc2a320134973a274b1ea988c2d5823b47c941ba1a9568	ChEMBL web services, per-hub activity counts	01	yes
+chembl_multitask_matrix.parquet	4466704	fe0f064d3d59de3d5e64f54465a0d1b7b2b796641edce2bdcfbafd34c71a45ab	stage 03, six-task ChEMBL label matrix with split column	03	no
+chembl_raw.npz	5515487	6017df66efd325acc4da819219eb2f84c23559f921ecc5b60ddfd782c2653f80	stage 05, ECFP4 + descriptor features of the ChEMBL pool	05	no
+chemspace.parquet	745476	a9a31cdba63c4c801078cd8592b6739af3ef96256d85e8453bf107df797fbcdb	stage 03, descriptor table of the ChEMBL pool	03	yes
+civic_genes.json	2118	d29d43b3971a2c379053a13d988af6d7d8f03d4a040dff2d878a26f7f7ae2141	CIViC API, glioma evidence items	01	yes
+cmnpd_curated.parquet	8368804	bd7c4591a4efd10501f71a6b48114b84d204b152f8251566ed870468c8ef4535	stage 02, curated CMNPD 1.0 marine library (26,754 compounds)	02	no
+cmnpd_curation_attrition.csv	1021	c0b911841a6e0394cb15cc06256af5bdeedadf671634d7c6745c4eb42e41d0ab	stage 02 result table	02	yes
+cmnpd_ecfp4.npz	1967642	5d1aea4981792c986a4572d22ab6e39978bfad9816eba390cfed7db276055211	stage 02, ECFP4 bit matrix of the curated marine library	02	no
+cmnpd_glioma_cellline_activity.csv	253775	12bdfbf140554bcdf1a6278d5d6e4c61214675fda554b99c9262b68abd0cf631	CMNPD glioma cell-line bioactivity records	02	yes
+cmnpd_library_summary.csv	1578	2576a622acd52ebb13ff0b48c6ef62b0a6c1254dc94f0d0cf9e3d86f6133cd88	stage 02 result table	02	yes
+cmnpd_predictions.parquet	4129427	6f1027e0afed2ea8fab51cf917c73f7188525e1fb3c862a11cad8ce955145330	stage 08, all 26,754 marine compounds scored on the six targets	08	no
+cmnpd_raw.npz	4190655	45eb97914721c7cc9a5af04243380137ac9d0b14c56a2aef41c57bd67fb3a98e	stage 05, ECFP4 + descriptor features of the marine library	05	no
+cmnpd_top_candidates.csv	38992	7f542adfe8865d1e5c2cc7c12ed6ac6e4e6b0c0af648c015fb620c54bb586850	stage 08 result table	08	yes
+converged_external_marine.csv	4368	62e9267186dc1813371180638217e0e5d076a1cfaa106dc314c37b4aae76275b	stage 09 result table	09	yes
+converged_per_task.csv	12093	f462ee2af0abcae44880712b3cc2c09e24e09833146a09488e1479451ea826b2	stage 09 result table	09	yes
+converged_vs_rf_tests.csv	987	1b6867e1f8047f0ab1f94c732b4daa79d1212568d7c476ec4aded488c8d35c0c	stage 09 result table	09	yes
+convergence_ablation_table.csv	910	44d87f67ffb67fd80c55448b51cae5dc35fc0b6e5e82c0b0bdedf4c85ac79e86	stage 09 result table	09	yes
+curation_raw.pkl	28033234	aee61885f11fb9c54ae31606d719f2321136963bb4ce9cd86ca94e4d8ba4d1d8	stage 02, pre-filter CMNPD records with attrition flags	02	no
+dataset_summary.csv	2003	db92fcd5a10a115589727ccc61c1f4bfdfe25de3d81963c74b6540cebc6fbfed	stage 03 result table	03	yes
+decoy_roc_inputs.npz	216257	696746723224078a8843273e2cdc85166db2a76b026ad989d76654f979d2c49e	stage 06, actives-vs-decoys score vectors	06	yes
+decoy_set.parquet	3448629	a86217db3b1a770da7e0429277bc34f389bab970f1cca2cf7cae5bc06687e63e	stage 04, ZINC20 property-matched decoys (45,213)	04	no
+ecfp4_bit_dictionary.csv	1329	0f06c8baaa03d2de34feee53d8fefeea6d4464c26589739910a619d3a0fa72c2	stage 07 result table	07	yes
+enrichment_results.csv	619	7b413f463ab1231a20284c304917ff6f7b0b1e7f2739eae286fbe14bd79cf0e5	stage 06 result table	06	yes
+ens_preds.npz	1195925	65934a83c3cae006392b320daca3368acbea4479e9c3dcc482e359c043cebf74	stage 06, per-model test and validation prediction tensors	06	yes
+external_phenotypic_all_stages.csv	1247	a183e467318feb22f2c3f90775fb58631bab14f76134306640323eec181dffb5	stage 06 result table	06	yes
+external_phenotypic_by_cellline.csv	20470	ea9f67e0d58a0bce8fbf56d49afd0600ea879e04f19730adf9e6dd1c13e234c4	stage 06 result table	06	yes
+external_phenotypic_validation.csv	22766	d524eaa9eac2954ccf85a63fe684fd4aded92c56e2609269997fd6b77dece347	stage 06 result table	06	yes
+fda_control_recovery.csv	19548	3edec428536328373b10c4abd31c4d53eb4bf524f79fc135294c26bbf7afd66b	stage 06 result table	06	yes
+fda_positive_controls.csv	6188	1917bc0963bb8d545c9cf4ecbee5328f98c9573c0137d719fbb43bbd25631d9a	stage 04, ChEMBL max_phase 4 drug-target pairs for the panel	04	yes
+featnames.npy	149744	f08a7b781b8134ae1e889a962a6cc298a789b08b584ecb34906e5e6fff90c28b	stage 05, 2,078 feature names (2,048 bits + 30 descriptors)	05	yes
+feature_importance_full.csv	83073	796af1418d372ba481cf1f1daf3265e5b56268caf71376fc934817eb1fb4086f	stage 07 result table	07	yes
+fig_exemplars.json	5451	f0c5f9febb0f37531458c0320055b243712059f5d33814967ac829a1f6e6c06e	stage 07, exemplar molecules illustrating each top-10 feature	07	yes
+glioma_network_centrality.csv	29041	9c57e0f888151055b26eb52e397298e565273854c79ad6297295406c43c505f8	stage 01 result table	01	yes
+glioma_pathway_enrichment.csv	86421	001abb961d42e002bb2f34aa113fbbc65021194e00a8e85409278b49de23dd31	stage 01 result table	01	yes
+glioma_ppi_edges.csv	54262	4affbe9731dff62bbf688dd1ab2c62c9a2205f88f5cffa33221a6df675022ede	stage 01 result table	01	yes
+glioma_seed_genes.csv	39142	859c8a6cde0bf953c09c33aefd0d76a9ca2036996c2328a68faab4170aec4253	stage 01 result table	01	yes
+glioma_target_panel.csv	4057	eb6fd9010ea82e63258bcf52e7ec5faa8e26517ff590c565bd49272a00729329	stage 01 result table	01	yes
+gnn_rf_atom_attrib.csv	743145	1c8a26e4a0ce1091e9285f39e4ec5cbc1e8696aabba3aab4fbe622f5443f8b67	stage 07, atom-level RF-projected attribution	07	yes
+gnn_vs_rf_attribution.csv	5862	62bcaff120689b6076c048f7c4e1df9f78f3942c9a6c3c2fc198d1403868e01d	stage 07, per-target attribution comparison	07	yes
+gnnexplainer_atom_attrib.csv	19704	e8ae47a96dcf638d818a20c9d4ea436d6319efd98617d2597895dba6c08c9896	stage 07, atom-level integrated-gradients attribution	07	yes
+go_raw.json	2127902	606969f1b36404ff0563c6683d8a83b603d73af74f0ad5aeaa657c9079ce612f	QuickGO / UniProt GO annotations for the network genes	01	no
+hyperparameter_budget_ablation.csv	647	0e70395960430b37312bda9cda9851692a38a78ab84b32eb89bd35b375a46128	stage 10 result table	10	yes
+marine_holdout.csv	4334	a0fad7a737b37cc698930baae24268c5590503784948121ba31ff234cfc33912	stage 04, CMNPD compounds overlapping the ChEMBL panel	04	yes
+marine_holdout_predictions.csv	10714	2579bf359f0b3bef2bc44634bf236cb4a17c585d0ab5c882d2ab28837b7dc89c	stage 06 result table	06	yes
+marine_overlap_schemes.csv	267	360b1ee03d96450c75c83f651b9a6e47ca74abfa1b278e9c58ac61a925fa0ed9	stage 03 result table	03	yes
+model_config.json	5597	842724e4ffed8769cd83adb865f8b4f0bc9d0f5e5b170a042b349482fb566360	stage 05 result table	05	yes
+models_bundle.tar.gz	46557863	e71be7337d7c4a33d062c18df3fd5914fd6b0193afe8f710da32f8616774cfb0	stage 05, best-seed weights for all architectures + final random forest	05	no
+modules.json	2839	a47b63197b617c8be3726aeb98cdeec53f62934a1ad3bccb22e2405693136806	stage 01, greedy-modularity communities of the STRING subnetwork	01	yes
+polypharmacology_combinations.csv	5577	7f72b6b69f7b11bc25f9ee366cca9ee93dca9e3aaf5b16ac37dadd818fb5e19c	stage 08 result table	08	yes
+reactome_raw.json	3393863	7d4accaf63a5e52baa185293f8022238a535f9a26f545be6857ed976efdd0fa7	Reactome AnalysisService, per-module over-representation	01	no
+screening_funnel.csv	1048	42790939f30d7a7630a33d1882079c52263968418ba8e34971243215f4b43ac8	stage 08 result table	08	yes
+seven_compound_provenance.csv	6920	db1b8013eda831c544c596e67fa539d69cb61e79b3c5e8e1aac9eddd30472744	stage 08 result table	08	yes
+seven_rank_rf_vs_gnn.csv	521	29f82b2c9a076dfe1bf62f65d65e189463733de1344559705aff433683b2edb7	stage 08 result table	08	yes
+seven_survivors.csv	1412	8969c281ddb10acbb0e5fe2488809a7ab05c8c3872b5fdfd761d41fc4ad15b15	stage 08 result table	08	yes
+shap_marine_CDK6.npz	628913	d46009c845a1cfb569c84381f2edec93e7628f13059bff5bced9cc6d1aa29743	stage 07, exact TreeSHAP values, CDK6, marine library	07	yes
+shap_marine_EGFR.npz	1484320	b9a503d343546298bea49bfb8f72096e9be86cdaccc316ebfb5041ec7339ffce	stage 07, exact TreeSHAP values, EGFR, marine library	07	no
+shap_marine_IDH1.npz	971619	5ee2175334ea5523675ed7c5e28dc86f6eb1002ca162e405d6dc4cc66b8a25cf	stage 07, exact TreeSHAP values, IDH1, marine library	07	yes
+shap_marine_KDR.npz	1486616	bc4f818315d1bf6104abf88079453eda8b74c3b3444be6c135fc664919cfb00c	stage 07, exact TreeSHAP values, KDR, marine library	07	no
+shap_marine_PDGFRA.npz	1204183	0c2ca0ef4604d4a24b6d5453d0ee6c115a3fb62000013d2b8754a924633bcec2	stage 07, exact TreeSHAP values, PDGFRA, marine library	07	no
+shap_marine_PIK3CA.npz	1430412	d64f63b3f43ed1ad23bffc643c833c527fd56329bc5b7211e02089b55ead67f9	stage 07, exact TreeSHAP values, PIK3CA, marine library	07	no
+shap_test_CDK6.npz	735505	a1e8a2ffdc32713b60073b3c72364bd107d9f7912f2393a3cadc6f8c8beee78c	stage 07, exact TreeSHAP values, CDK6, internal test partition	07	yes
+shap_test_EGFR.npz	15138703	67927d1be47d26910db25d4f4109a9f999e00190214208504aa042f14fd0720a	stage 07, exact TreeSHAP values, EGFR, internal test partition	07	no
+shap_test_IDH1.npz	2984819	b38ea03da98543eced365bbf282eaebfb33cecc17db7003e68b687ed793dff25	stage 07, exact TreeSHAP values, IDH1, internal test partition	07	no
+shap_test_KDR.npz	15265048	d695f675364dafaed30cd9aa49b8e33daf5f8ac352841c9e2b97c48e7a3a5baa	stage 07, exact TreeSHAP values, KDR, internal test partition	07	no
+shap_test_PDGFRA.npz	1547026	91519de2a85a2526dea6180b1ef3dfce34a0e2c8edd297a7401bff58cdfcd0c5	stage 07, exact TreeSHAP values, PDGFRA, internal test partition	07	no
+shap_test_PIK3CA.npz	9860522	2e2dcdf8d44f10e37197ddaa6b6c3ed18b6d55d6c80cdf27a52cfca89338f848	stage 07, exact TreeSHAP values, PIK3CA, internal test partition	07	no
+significance_tests.csv	29587	f45ec729f726be674eb64af80d5a22a361910dea4f334c2dae6e7dc4df403763	stage 06 result table	06	yes
+step1_raw.json	561817	dfd82c107d6208ae2f70fbb2381e1b365a0ef03820702c29e9a818684047cc94	Open Targets Platform GraphQL API, glioma disease associations	01	yes
+string_net.json	174205	12124a9cfec3931cb139da07025c9415257c362e2632134caae05e5308f6062a	STRING v12 API, Homo sapiens, combined score >= 0.70	01	yes
+top10_features.csv	11093	ef68d9c12ba8b2d26e9585ae51c035ae10b8696a676d2e7d1a5d4da6f27fd085	stage 07, consensus top-10 features with structural annotation	07	yes
+tuned_per_task.csv	4101	94e22a7708caa5a836450f48f8115662cdeeeb838ddfa67a1ad553c949795376	stage 10 result table	10	yes
+CMNPD_1.0_calc_prop.tsv			CMNPD 1.0 vendor property table - register and download from https://www.cmnpd.org (not redistributable)	02	no
+CMNPD_1.0.sdf			CMNPD 1.0 2D structure file - register and download from https://www.cmnpd.org (not redistributable)	02	no

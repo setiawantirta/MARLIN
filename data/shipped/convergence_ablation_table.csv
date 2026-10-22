@@ -1,0 +1,7 @@
+Architecture,Epochs to early stop (3 seeds),Parameters (capped -> full),"Macro ROC-AUC, 30 epochs","Macro ROC-AUC, converged","Marine rho, 30 epochs","Marine rho, converged","Marine rho p, converged","Marine rho q(BH), converged","Marine ROC-AUC, 30 epochs","Marine ROC-AUC, converged",RF - converged dAUC,q(BH) vs RF
+GIN,86/63/76,"207,238 -> 1,203,462",0.882,0.887,0.014,0.103,0.152,0.253,0.474,0.538,0.147,0.0275
+GATv2,64/66/73,"161,670 -> 890,118",0.867,0.898,0.001,-0.011,0.876,0.992,0.481,0.494,0.191,0.0029
+D-MPNN,51/50/46,"96,262 -> 432,390",0.893,0.901,-0.099,-0.128,0.074,0.186,0.382,0.394,0.292,0.0006
+AttentiveFP,50/48/41,"250,022 -> 1,056,190",0.877,0.878,-0.059,0.001,0.992,0.992,0.457,0.464,0.221,0.0006
+GraphGPS,34/50/51,"130,918 -> 1,054,374",0.869,0.861,0.052,0.129,0.073,0.186,0.502,0.529,0.156,0.0181
+Random forest (ECFP4+desc),n.a.,n.a.,0.922,n.a.,0.369,n.a.,n.a.,n.a.,0.685,n.a.,n.a.,n.a.

@@ -1,0 +1,8 @@
+scheme,n_chembl_pool_compounds,n_cmnpd_compounds
+full_key_cmnpd_native,7,7
+full_key_restandardised,12,14
+skeleton14_cmnpd_native,11,11
+skeleton14_restandardised,18,22
+ANY full key (union),12,
+ANY 14-char skeleton (union),18,
+MARINE HOLDOUT (union of all schemes),18,

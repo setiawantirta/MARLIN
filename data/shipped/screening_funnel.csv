@@ -1,0 +1,13 @@
+definition,stage_order,stage,n_compounds,pct_of_library,retained_from_previous_pct
+nominal,1,1. scored marine library,26754,100.0,100.0
+nominal,2,2. multi-target: >=2 targets (nominal threshold),12950,48.404,48.4
+nominal,3,3. inside applicability domain (max Tanimoto >= 0.30),794,2.968,6.13
+nominal,4,"4. BBB not excluded (vendor high/medium, or vendor-missing with CNS MPO4 >= 2)",266,0.994,33.5
+nominal,5,5. PAINS-alert-free,224,0.837,84.21
+stringent,1,1. scored marine library,26754,100.0,100.0
+stringent,2,2. multi-target: >=2 targets (stringent threshold),1390,5.195,5.2
+stringent,3,3. inside applicability domain (max Tanimoto >= 0.30),147,0.549,10.58
+stringent,4,"4. BBB not excluded (vendor high/medium, or vendor-missing with CNS MPO4 >= 2)",7,0.026,4.76
+stringent,5,5. PAINS-alert-free,7,0.026,100.0
+nominal_AD_agnostic,6,"multi-target + BBB not excluded + PAINS-free, AD status carried as a per-row flag",3314,12.387,
+stringent_AD_agnostic,6,"multi-target + BBB not excluded + PAINS-free, AD status carried as a per-row flag",39,0.146,

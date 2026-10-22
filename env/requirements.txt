@@ -1,0 +1,29 @@
+# pip layer. Install after creating the conda environment:
+#   pip install -r env/requirements.txt
+#
+# CPU-only reference path. For a CUDA build replace the torch line with the
+# wheel for your CUDA version from https://pytorch.org - no other pin changes.
+# torch and torch-geometric are needed only by stages 05, 07 and 09; stages
+# 11 and 12 run without them.
+torch==2.13.0
+torch-geometric==2.8.0.post1
+shap==0.52.0
+xgboost==3.4.1
+
+# Repeated so that `pip install -r env/requirements.txt` into a bare
+# virtualenv reproduces the same versions without conda.
+numpy==2.5.3
+pandas==3.0.5
+scipy==1.17.1
+scikit-learn==1.9.1
+matplotlib==3.11.1
+rdkit==2026.03.6
+networkx==3.6.1
+seaborn==0.13.2
+joblib==1.6.0
+pyarrow==25.0.0
+pillow==12.3.0
+statsmodels==0.15.0
+tqdm==4.70.0
+requests==2.34.2
+PyYAML>=6.0          # optional; repro/config.py has a built-in fallback parser

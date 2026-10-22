@@ -1,5 +1,28 @@
-# Object file
+
+# Object files
 *.o
 
 # Ada Library Information
 *.ali
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+._*
+
+# Runtime outputs
+outputs/*
+!outputs/.gitkeep
+
+# Checkpoints, cache, and logs
+checkpoints/
+cache/
+logs/
+
+# Non-redistributable vendor data
+# CMNPD requires a separate download (see data/README.md).
+data/CMNPD_1.0*
+data/*.sdf

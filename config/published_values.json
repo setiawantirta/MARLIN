@@ -1,0 +1,109 @@
+{
+ "_note": "Values as printed in the uploaded manuscript. The science is locked: stage 12 asserts against these and never rewrites them.",
+ "internal_macro_roc_auc_per_seed_mean": {
+  "RF": 0.922,
+  "XGB": 0.92,
+  "DMPNN": 0.893,
+  "GIN": 0.882,
+  "AttentiveFP": 0.877,
+  "GraphGPS": 0.869,
+  "GAT": 0.867
+ },
+ "internal_macro_roc_auc_seed_averaged_prediction": {
+  "RF": 0.923,
+  "XGB": 0.921,
+  "DMPNN": 0.902,
+  "GIN": 0.894,
+  "AttentiveFP": 0.888,
+  "GraphGPS": 0.881,
+  "GAT": 0.874
+ },
+ "external_marine": {
+  "n_compounds": 194,
+  "n_active": 51,
+  "pactivity_active_min": 6.0,
+  "RF": {
+   "spearman_rho": 0.369,
+   "spearman_p": 1.1e-07,
+   "roc_auc": 0.685
+  },
+  "XGB": {
+   "spearman_rho": 0.235,
+   "spearman_p": 0.00096,
+   "roc_auc": 0.64
+  },
+  "graph_networks_roc_auc_range": [
+   0.382,
+   0.502
+  ],
+  "censored_inclusive": {
+   "n_compounds": 217,
+   "RF_roc_auc": 0.673,
+   "_note": "secondary analysis; the headline 194/51 figures use censoring == 'censored_excluded'"
+  }
+ },
+ "rf_vs_xgb_external": {
+  "_source": "uploaded manuscript, Results 3.x: 'its advantage over the gradient-boosted ensemble was not significant (delta 0.045, q = 0.085)'; matches significance_tests.csv row MARINE_PHENOTYPIC RF vs XGB.",
+  "delta_auc": 0.045,
+  "q_bootstrap": 0.085,
+  "significant": false,
+  "_discrepancy_note": "The task brief for this reproducibility module quoted dAUC +0.0339, 95% CI -0.010 to +0.076, p = 0.119 for this comparison. That triple appears nowhere in the uploaded manuscript text and does not match significance_tests.csv (delta 0.045249, CI -0.005348 to 0.097962, p_bootstrap 0.0845, q_bootstrap 0.0845). Neither value has been altered; the manuscript value is used for verification because the uploaded .docx is the authoritative source of record.",
+  "_task_brief_variant": {
+   "delta_auc": 0.0339,
+   "ci95": [
+    -0.01,
+    0.076
+   ],
+   "p": 0.119
+  }
+ },
+ "control_convergence": {
+  "n_runs": 15,
+  "early_stopping_epoch_range": [
+   34,
+   86
+  ],
+  "marine_roc_auc_range": [
+   0.394,
+   0.538
+  ]
+ },
+ "control_hyperparameters": {
+  "rf_configs": 81,
+  "xgb_configs": 96,
+  "cv_folds": 5,
+  "total_fits": 15930,
+  "fits_before": 36,
+  "internal_rf_tuned": 0.923,
+  "internal_rf_published": 0.922,
+  "internal_xgb_tuned": 0.922,
+  "internal_xgb_published": 0.92,
+  "marine_rf_tuned": 0.682,
+  "marine_rf_published": 0.685,
+  "marine_xgb_tuned": 0.649,
+  "marine_xgb_published": 0.64,
+  "tuned_vs_published_rf_delta_auc": -0.0027,
+  "tuned_vs_published_rf_p": 0.4
+ },
+ "applicability_domain": {
+  "tanimoto_cutoff": 0.3,
+  "fraction_inside_percent": 8.2
+ },
+ "screening": {
+  "library_size": 26754,
+  "n_survivors": 7,
+  "n_staurosporine_class_indolocarbazoles": 6
+ },
+ "dataset": {
+  "n_curated_marine": 26754,
+  "n_chembl_compounds": 32403,
+  "n_tasks": 6,
+  "n_decoys": 45213,
+  "n_fda_pairs": 25
+ },
+ "internal_rf_vs_xgb": {
+  "delta_macro_roc_auc": 0.0018,
+  "q": 0.68,
+  "significant": false
+ }
+}
